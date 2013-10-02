@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 group :development, :test do
 	gem 'rspec-rails', '2.13.1'
+	gem 'sqlite3'
 end
 
 group :test do
@@ -14,7 +15,7 @@ end
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
