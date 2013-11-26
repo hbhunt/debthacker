@@ -17,7 +17,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'pg', '0.15.1'
-gem 'bcrypt-ruby', '3.1.2'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
