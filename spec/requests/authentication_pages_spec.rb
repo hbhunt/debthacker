@@ -29,12 +29,10 @@ describe "Authentication" do
   		let(:user) { FactoryGirl.create(:user) }
   		before do
         sign_in user
-  			# fill_in "Email", with: user.email.upcase
-  			# fill_in "Password", with: user.password
-  			# click_button "Sign in"
   		end
 
   		it { should have_title(user.name) }
+      it { should have_link('Users', href: users_path) }
   		it { should have_link('Profile', href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
   		it { should have_link('Sign out', href: signout_path) }
@@ -44,6 +42,89 @@ describe "Authentication" do
   			before { click_link "Sign out" }
   			it { should have_link('Sign in') }
   		end	
-  	end
-  end
-end
+  	end # with valid info
+  end # signin
+
+  describe "authorization" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    describe "in the Users controller" do
+      describe "visiting the edit page" do
+        before { visit edit_user_path(user) }
+        it { should have_title('Sign in') }
+      end
+
+      describe "submitting to the update action" do
+        before { patch user_path(user) }
+        specify { expect(response).to redirect_to(signin_path) }
+      end
+    end # in the users controller
+
+    describe "as wrong user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      before { sign_in user, no_capybara: true }
+
+      describe "submitting a GET request to the Users#edit action" do
+        before { get edit_user_path(wrong_user) }
+        specify { expect(response.body).not_to match(full_title('Edit user')) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+
+      describe "submitting a PATCH request to the Users#update action" do
+        before { patch user_path(wrong_user) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end # as wrong user
+
+    describe "for non-signed-in users" do
+      describe "when attempting to visit a protected page" do
+        before do
+          visit edit_user_path(user)
+          fill_in "Email", with: user.email
+          fill_in "Password", with: user.password
+          click_button "Sign in"
+        end
+
+        describe "after signing in" do
+          it "should render the desired protected page" do
+            expect(page).to have_title('Edit user')
+          end
+        end # after signing in
+      end # visit protected page
+
+      describe "in the Users controller" do
+        describe "visiting the user index" do
+          before { visit users_path }
+          it { should have_title('Sign in') }
+        end
+      end # in the Users controller
+    end # for non-signed-in users
+
+    describe "as a non-admin user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:non_admin) { FactoryGirl.create(:user) }
+
+      before { sign_in non_admin, no_capybara: true }
+
+      describe "submitting a DELETE request to the Users#destroy action" do
+        before { delete user_path(user) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end # as a non-admin user
+
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password, password_confirmation: user.password} }
+      end
+      before do
+        sign_in user, no_capybara: true
+        patch user_path(user), params
+      end
+      
+      specify { expect(user.reload).not_to be_admin }
+    end
+
+  end # authorization
+
+end # Authentication

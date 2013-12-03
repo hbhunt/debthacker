@@ -19,6 +19,9 @@ end
 gem 'rails', '4.0.0'
 gem 'pg', '0.15.1'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
