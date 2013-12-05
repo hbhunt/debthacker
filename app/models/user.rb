@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :microposts, dependent: :destroy
+
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
@@ -17,6 +19,13 @@ class User < ActiveRecord::Base
 
 	def User.encrypt(token)
 		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	def feed
+		# Ghetto until the next chapter
+		# ? indicates a property that is escaped to avoid SQL injection attacks. 
+		# Same as just saying 'microposts'. Brevity FTL!
+		Micropost.where("user_id = ?", id)
 	end
 
 	private

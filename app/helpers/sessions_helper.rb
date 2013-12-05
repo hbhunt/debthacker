@@ -31,6 +31,15 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	# this function lives in this helper so it's available to both the users controller and the microposts controller
+	def signed_in_user
+		unless signed_in?
+			store_location
+			flash[:notice] = "Please sign in."
+        	redirect_to signin_url
+		end
+	end
+
 	# Friendly Forwarding
 	# ====================
 
