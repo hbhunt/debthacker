@@ -28,10 +28,7 @@ class User < ActiveRecord::Base
 	end
 
 	def feed
-		# Ghetto until the next chapter
-		# ? indicates a property that is escaped to avoid SQL injection attacks. 
-		# Same as just saying 'microposts'. Brevity FTL!
-		Micropost.where("user_id = ?", id)
+		Micropost.from_users_followed_by(self)
 	end
 
 	def following?(other_user)
