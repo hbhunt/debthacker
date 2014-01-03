@@ -13,11 +13,8 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-			<%= f.label :password %>
-			<%= f.password_field :password %>
-
-			<%= f.label :password_confirmation, "Confirm password" %>
-			<%= f.password_field :password_confirmation %>
+			<%= f.label :has_defaulted %>
+			<%= f.select :has_defaulted, [['I\'ve defaulted',true],['I\'ve never defaulted',false]] %>
 
 			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
 		<% end %>
