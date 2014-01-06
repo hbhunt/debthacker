@@ -13,8 +13,18 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-			<%= f.label :has_defaulted %>
-			<%= f.select :has_defaulted, [['I\'ve defaulted',true],['I\'ve never defaulted',false]] %>
+			<%= f.label :institution_type, "Describe the school you attended" %>
+			<%= f.select :institution_type, [
+				['Public/State','public'],
+				['For-Profit','for-profit'],
+				['Non-Profit','non-profit']
+			] %>
+
+			<%= f.label :has_graduated, "Have you graduated?" %>
+			<%= f.select :has_graduated, [['I\'ve graduated',true],['I have not graduated',false]] %>
+
+			<%= f.label :has_full_time_employment, "Are you working full-time?" %>
+			<%= f.select :has_full_time_employment, [['I work full-time',true],['I do not work full-time',false]] %>
 
 			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
 		<% end %>
