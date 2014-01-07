@@ -45,6 +45,24 @@ class User < ActiveRecord::Base
 		relationships.find_by(followed_id: other_user.id).destroy!
 	end
 
+	def flags
+		warning_flags = 0
+
+		if self.institution_type != 'public'
+			warning_flags += 1
+		end
+
+		if !self.has_graduated?
+			warning_flags += 1
+		end
+
+		if !self.has_full_time_employment?
+			warning_flags += 1
+		end
+
+		return warning_flags
+	end
+
 	private
 
 		def create_remember_token

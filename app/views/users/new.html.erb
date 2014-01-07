@@ -13,24 +13,13 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-			<%= f.label :institution_type %>
-			<%= f.select :institution_type, [
-				['Public/State','public'],
-				['For-Profit','for-profit'],
-				['Non-Profit','non-profit']
-			] %>
-
-			<%= f.label :has_graduated %>
-			<%= f.select :has_graduated, [['I\'ve graduated',true],['I have not graduated',false]] %>
-
-			<%= f.label :has_full_time_employment %>
-			<%= f.select :has_full_time_employment, [['I work full-time',true],['I do not work full-time',false]] %>
-
 			<%= f.label :password %>
 			<%= f.password_field :password %>
 
 			<%= f.label :password_confirmation, "Re-enter your password" %>
 			<%= f.password_field :password_confirmation %>
+
+			<%= render :partial => 'shared/user_attributes_fields', :locals=>{:f => f} %>
 
 			<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 		<% end %>

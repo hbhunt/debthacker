@@ -17,5 +17,17 @@
 		<h3>Institution Type: <%= @user.institution_type %></h3>
 		<h3>Has Graduated: <%= @user.has_graduated %></h3>
 		<h3>Has Full-Time Employment: <%= @user.has_full_time_employment %></h3>
+		<h3>Flags: <%= @user.flags %></h3>
 	</div>
 </div>
+<% if @user.flags == 0 %>
+	<%= render 'user_green' %>
+<% end %>
+
+<% if @user.flags == 1 %>
+	<%= render 'user_yellow' %>
+<% end %>
+
+<% if @user.flags > 1 %>
+	<%= render 'user_red' %>
+<% end %>

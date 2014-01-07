@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140106002444) do
     t.boolean  "has_defaulted"
     t.text     "institution_type"
     t.boolean  "has_graduated"
-    t.text     "has_full_time_employment"
+    t.boolean  "has_full_time_employment"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
