@@ -1,31 +1,65 @@
 <div class="row">
-	<div class="span4">
-		<h3>(Green) Compare Repayment Plans</h3>
-	</div>
-	<div class="span8">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, sint, hic, minima nesciunt porro quidem quaerat cupiditate id voluptates distinctio facere libero cum ducimus eaque architecto provident at ad inventore.</p>
-		<p>Link to PBS.</p>
+	<div class="span-12">
+		<h3>Hi <%= @user.name %>,</h3>
+		<p class="lead">It looks like you're well on your way to repaying your loans. We've compiled the resources below just for you. These resources were chosen based on your responses to questions from the sign-up process. You can <%= link_to "change your answers", edit_user_path(current_user) %> at any time.</p>
 	</div>
 </div>
 
 <div class="row">
+	<div class="span12">
+		<h3>Compare Repayment Plans</h3>
+	</div>
+	<div class="span8">
+		<p>Shopping around to find the best repayment plan can help you:</p>
+		<ul>
+			<li>See how to get out of debt faster</li>
+			<li>Lower the total cost of debt</li>
+			<li>Find ways to lower your monthly payment</li>
+			<li>See if consolidation might be right for you</li>
+		</ul>
+	</div>
 	<div class="span4">
+		<p>Learn More</p>
+		<ul>
+			<li><a href="http://www.paybacksmarter.com">paybacksmarter.com</a></li>
+			<li><a href="#">other tools</a></li>
+			<li>...</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12">
 		<h3>Prepayment</h3>
 	</div>
 	<div class="span8">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, sint, hic, minima nesciunt porro quidem quaerat cupiditate id voluptates distinctio facere libero cum ducimus eaque architecto provident at ad inventore.</p>
+		<p>Most student loans, including federal student loans, allow the borrower to prepay their loans without penalty. This means that any additional payment will reduce your total cost and help you pay your debt back faster. Some borrowers even prepay their entire loan before any interest has accrued. If you have non-federal loans, be certain to check with your lender to confirm that prepayment is penalty-free.</p>
+	</div>
+	<div class="span4">
+		<p>Learn more</p>
+		<ul>
+			<li><a href="http://paybacksmarter.com/faq_payback_faster">paybacksmarter.com</a></li>
+			<li><a href="#">Other Resource</a></li>
+		</ul>
 	</div>
 </div>
 
 <div class="row">
-	<div class="span4">
+	<div class="span12">
 		<h3>Consolidation</h3>
 	</div>
 	<div class="span8">
 		<p><strong>Federal</strong></p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, sint, hic, minima nesciunt porro quidem quaerat cupiditate id voluptates distinctio facere libero cum ducimus eaque architecto provident at ad inventore.</p>
+		<p>To lower your monthly payment and simplify loan repayment, consider a Traditional Direct Consolidation Loan. Based on the amount of federal student loans you combine, you may be eligible for up to 30 years to repay your student loans. Direct Consolidation sets a fixed interest rate based on a weighted average of the interest rates on the loans being consolidated, rounded up to the nearest one-eighth of 1%, capped at 8.25%.</p>
 
 		<p><strong>Private</strong></p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, sint, hic, minima nesciunt porro quidem quaerat cupiditate id voluptates distinctio facere libero cum ducimus eaque architecto provident at ad inventore.</p>
+		<p>Private consolidation loans are offered by banks and credit unions (not the Federal government) and are credit-based and generally require strong credit to be obtained. Most people take advantage of the Federal programs because they are having trouble managing their debt burden and a lower payment will help. If you also have private loan debt and you're struggling to make the payments and/or have weak credit, then it's unlikely you'll qualify for private consolidation.</p>
+	</div>
+	<div class="span4">
+		<p>Learn more</p>
+		<ul>
+			<li><a href="http://paybacksmarter.com/faq_private_loan_consolidation">Private Loan Consolidation</a></li>
+			<li><a href="http://paybacksmarter.com/faq_consolidate_loans">Federal Loan Consolidation</a></li>
+		</ul>
 	</div>
 </div>

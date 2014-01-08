@@ -1,4 +1,18 @@
 <% provide(:title, @user.name) %>
+
+<% if @user.flags == 0 %>
+	<%= render 'user_green' %>
+<% end %>
+
+<% if @user.flags == 1 %>
+	<%= render 'user_yellow' %>
+<% end %>
+
+<% if @user.flags > 1 %>
+	<%= render 'user_red' %>
+<% end %>
+
+<% if Rails.env.development? %>
 <div class="row">
 	<aside class="span4">
 		<section>
@@ -20,14 +34,4 @@
 		<h3>Flags: <%= @user.flags %></h3>
 	</div>
 </div>
-<% if @user.flags == 0 %>
-	<%= render 'user_green' %>
-<% end %>
-
-<% if @user.flags == 1 %>
-	<%= render 'user_yellow' %>
-<% end %>
-
-<% if @user.flags > 1 %>
-	<%= render 'user_red' %>
 <% end %>
