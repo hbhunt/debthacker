@@ -18,15 +18,17 @@
 		</div>
 	</div> -->
 
-	<h3>[Here's where we can include overview content]</h3>
-	<h5><%= link_to "View Profile", current_user %> for custom info.</h5>
-	<h5><%= link_to "Edit Settings", edit_user_path(current_user) %> to change entered info.</h5>
+	<h3>We've created a custom profile based on your answers.</h3>
+	<p>Extra explanation can go here, particularly if it helps make the demo more cohesive. We can also just put the profile itself on this page, but I thought an interstitial page like this one would make a better story.</p>
+	<%= link_to "View Profile", current_user, class: "btn btn-large btn-primary" %>
+	<%= link_to "Review Questions", edit_user_path(current_user), class: "btn btn-large" %>
 
 <% else %>
 
 	<div class="center hero-uint">
 	  <h1>DebtHacker <br><small>Understand your repayment options.</small></h1>
 	  <%= link_to "Get Started", signup_path, class: "btn btn-large btn-primary" %>
+	  <p><br>Already have an account? <%= link_to "Sign in", signin_path %></p>
 	</div>
 
 <% end %>

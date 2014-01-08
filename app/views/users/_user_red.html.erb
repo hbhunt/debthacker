@@ -1,5 +1,65 @@
 <div class="row">
+	<div class="span-12">
+		<h3>Hi <%= @user.name %>,</h3>
+		<p class="lead">Many borrowers like you have trouble paying off their loans. If you're having any trouble at all making your monthly payment, contact your loan provider. The resources below were chosen based on your responses to questions from the sign-up process. You can <%= link_to "change your answers", edit_user_path(current_user) %> at any time.</p>
+	</div>
+</div>
+
+<div class="row">
 	<div class="span12">
-		<h3>Red</h3>
+		<h3>Deferment</h3>
+	</div>
+	<div class="span8">
+		<p>Lenders frequently allow student borrowers to postpone making payments on their loans while enrolled in school at least half time and extending a number of months after students leave their program or graduate. This latter period is called a grace period, and typically lasts six to twelve months, though details vary by loan type and lender. During these times, interest may accrue. Some lenders allow you to pay the accruing interest during this time. These are called interest-only payments.</p>
+	</div>
+	<div class="span4">
+		<p>Learn More</p>
+		<ul>
+			<li><a href="http://paybacksmarter.com/faq_postponing_repayment_loan">paybacksmarter.com</a></li>
+
+			<li>...</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12">
+		<h3>Forbearance</h3>
+	</div>
+	<div class="span8">
+		<p>This is a debt management provision offered by many lenders whereby payments on the loan in question are temporarily suspended. If you ask for forbearance, you may be able to make no payment or at least a lower amount. However, it's different from deferment in that interest will still accrue on your loans. That interest will also be capitalized, meaning you will pay interest on that interest. Forbearance is not automatically granted and requires documented proof of extreme financial hardship or other unusual circumstances. Even if forbearance is granted, the suspended payments will still be due eventually -- plus any interest that might have accrued on the suspended payments. For more information, contact the original lender or current servicer of your loan.</p>
+	</div>
+	<div class="span4">
+		<p>Learn More</p>
+		<ul>
+			<li><a href="http://studentaid.ed.gov/repay-loans/deferment-forbearance">Federal Student Aid</a></li>
+
+			<li>...</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span12">
+		<h3>Pay as You Earn (PAYE) Repayment</h3>
+	</div>
+	<div class="span8">
+		<p>Starting Dec 21, 2012, the Pay As You Earn (PAYE) Repayment plan offers a new way to repay Direct Loans (except for Parent PLUS Loans). Modeled after the IBR rules, PAYE will cap your monthly payment at 10% of discretionary income using your pre tax income. The repayment plan is calculated over 20 years. After 20 years of payments, any remaining amount you have not repaid will be forgiven.</p>
+		<p>With PAYE, you get:</p>
+		<ul>
+			<li>Affordable payments start as low as $0</li>
+			<li>Payments eligible for Public Service Loan Forgiveness</li>
+			<li>Remaining payment cancellation after 20 years of repayment if you remain in program</li>
+			<li>Subsidized loan interest payments for any unpaid interest for up to 3 years if the calculated monthly payment is less than the monthly accrued interest</li>
+			<li>No prepayment penalties</li>
+		</ul>
+	</div>
+	<div class="span4">
+		<p>Learn More</p>
+		<ul>
+			<li><a href="http://paybacksmarter.com/faq_pay_as_you_earn_paye">paybacksmarter.com</a></li>
+			<li><a href="#">other links</a></li>
+			<li>...</li>
+		</ul>
 	</div>
 </div>
