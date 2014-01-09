@@ -1,23 +1,5 @@
 <% if signed_in? %>
 
-<!-- 	<div class="row">
-		<aside class="span4">
-			<section>
-				<%= render 'shared/user_info' %>
-			</section>
-			<section>
-				<%= render 'shared/stats' %>
-			</section>
-			<section>
-				<%= render 'shared/micropost_form' %>
-			</section>
-		</aside>
-		<div class="span8">
-			<h3>Micropost Feed</h3>
-			<%= render 'shared/feed' %>
-		</div>
-	</div> -->
-
 	<h3>We've created a custom profile based on your answers.</h3>
 	<p>Extra explanation can go here, particularly if it helps make the demo more cohesive. We can also just put the profile itself on this page, but I thought an interstitial page like this one would make a better story.</p>
 	<%= link_to "View Profile", current_user, class: "btn btn-large btn-primary" %>

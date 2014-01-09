@@ -12,69 +12,25 @@ describe "UserPages" do
 
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
-    let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
-    let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") } 
 
   	before { visit user_path(user) }
 
   	it { should have_content(user.name) }
+    it { should have_content("well on your way") }
   	it { should have_title(user.name) }
 
-    describe "microposts" do
-      it { should have_content(m1.content) }
-      it { should have_content(m2.content) }
-      it { should have_content(user.microposts.count) }
+    describe "for a 'yellow' user" do
+      let(:yellow_user) { FactoryGirl.create(:yellow_user) }
+      before { visit user_path(yellow_user) }
+      it { should have_content("Some borrowers")}
     end
 
-    describe "follow/unfollow buttons" do
-      let(:other_user) { FactoryGirl.create(:user) }
-      before { sign_in user }
-
-      describe "following a user" do
-        before { visit user_path(other_user) }
-
-        it "should increment the followed user count" do
-          expect do
-            click_button "Follow"
-          end.to change(user.followed_users, :count).by(1)
-        end
-
-        it "should increment the other users' followers count" do
-          expect do
-            click_button "Follow"
-          end.to change(other_user.followers, :count).by(1)
-        end
-
-        describe "toggling the button" do
-          before { click_button "Follow" }
-          it { should have_xpath("//input[@value='Unfollow']")}
-        end
-      end
-
-      describe "unfollowing a user" do
-        before do
-          user.follow!(other_user)
-          visit user_path(other_user)
-        end
-
-        it "should decrement the followed user count" do
-          expect do
-            click_button "Unfollow"
-          end.to change(user.followed_users, :count).by(-1)
-        end
-
-        it "should decrement the other users's follower count" do
-          expect do
-            click_button "Unfollow"
-          end.to change(other_user.followers, :count).by(-1)
-        end
-
-        describe "toggling the button" do
-          before { click_button "Unfollow" }
-          it { should have_xpath("//input[@value='Follow']") }
-        end
-      end
+    describe "for a 'red' user" do
+      let(:red_user) { FactoryGirl.create(:red_user) }
+      before { visit user_path(red_user) }
+      it { should have_content("Forbearance") }
     end
+
   end
 
   describe "signup" do
@@ -97,10 +53,10 @@ describe "UserPages" do
 
   	describe "with valid information" do
   		before do
-  			fill_in "Name", 					with: "Example User"
-  			fill_in "Email", 					with: "user@example.com"
-  			fill_in "Password", 			with: "foobar"
-  			fill_in "Confirmation", 	with: "foobar"
+  			fill_in "Name", 					          with: "Example User"
+  			fill_in "Email", 					          with: "user@example.com"
+  			fill_in "Password", 			          with: "foobar"
+  			fill_in "Re-enter your password", 	with: "foobar"
   		end
 
   		it "should create a user" do
@@ -133,7 +89,7 @@ describe "UserPages" do
       describe "with invalid information" do
         before { click_button "Save changes" }
 
-        it { should have_content('error') }
+        it { should_not have_content('error') }
       end
 
       describe "with valid information" do
@@ -142,8 +98,6 @@ describe "UserPages" do
         before do
           fill_in "Name", with: new_name
           fill_in "Email", with: new_email
-          fill_in "Password", with: user.password
-          fill_in "Confirm password", with: user.password
           click_button "Save changes"
         end
 
@@ -204,34 +158,5 @@ describe "UserPages" do
     end # index
 
   end # / describe signup
-
-  describe "following/followers" do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:other_user) { FactoryGirl.create(:user) }
-    before { user.follow!(other_user) }
-
-    describe "followed users" do
-      before do
-        sign_in user
-        visit following_user_path(user)
-      end
-
-      it { should have_title(full_title('Following')) }
-      it { should have_selector('h3', text: 'Following') }
-      it { should have_link(other_user.name, href: user_path(other_user)) }
-    end
-
-    describe "followers" do
-      before do
-        sign_in other_user
-        visit followers_user_path(other_user)
-      end
-
-      it { should have_title(full_title('Followers')) }
-      it { should have_selector('h3', text: 'Followers') }
-      it { should have_link(user.name, href: user_path(user)) }
-    end
-
-  end # / following/followers
 
 end # / describe user pages

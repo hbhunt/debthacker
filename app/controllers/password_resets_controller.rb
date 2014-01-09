@@ -21,10 +21,4 @@ class PasswordResetsController < ApplicationController
   	end
   end
 
-  private
-
-	  def password_reset_params
-	    params.require(:user).permit(:username, :email, :password, :salt, :encrypted_password)
-	  end
-
 end
