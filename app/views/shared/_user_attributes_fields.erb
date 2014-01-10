@@ -3,10 +3,10 @@
 	['Public/State','public'],
 	['For-Profit','for-profit'],
 	['Non-Profit','non-profit']
-] %>
+], prompt: "Choose one...",  label: "Describe the school you attended" %>
 
 <%= f.label :has_graduated, "Have you graduated?" %>
-<%= f.select :has_graduated, [['I\'ve graduated',true],['I have not graduated',false]] %>
+<%= f.select :has_graduated, [['I\'ve graduated',true],['I have not graduated',false]], prompt: "Choose one..." %>
 
 <%= f.label :has_full_time_employment, "Are you working full-time?" %>
-<%= f.select :has_full_time_employment, [['I work full-time',true],['I do not work full-time',false]] %>
+<%= f.select :has_full_time_employment, [['I work full-time',true],['I do not work full-time',false]], prompt: "Choose one..." %>
